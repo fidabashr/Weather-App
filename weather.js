@@ -1,3 +1,4 @@
+
 const API_KEY = "051f6796a24c2402663a0b1d3f212459";
 
 const cityInput = document.getElementById("cityInput");
@@ -6,11 +7,13 @@ const weatherCard = document.getElementById("weatherCard");
 const loading = document.getElementById("loading");
 const error = document.getElementById("error");
 
+const themeBtn = document.getElementById("themeBtn");
+
 
 async function getWeather(city) {
 
     const url =
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${"051f6796a24c2402663a0b1d3f212459"}&units=metric`;
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
 
     const response = await fetch(url);
 
@@ -73,3 +76,16 @@ async function searchWeather() {
 
 
 searchBtn.addEventListener("click", searchWeather);
+
+
+themeBtn.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+        themeBtn.textContent = "☀️ Light";
+    } else {
+        themeBtn.textContent = "🌙 Dark";
+    }
+
+});
